@@ -9,7 +9,7 @@ import java.util.List;
 
 public class JdbcUserDAO implements UserDAO {
 
-    private JdbcTemplate jdbcTemplate;
+    public JdbcTemplate jdbcTemplate;
 
 
     public JdbcUserDAO(DataSource dataSource) {
@@ -18,7 +18,16 @@ public class JdbcUserDAO implements UserDAO {
 
     @Override
     public User saveUser(String username, String password) {
-        return null;
+      int id = jdbcTemplate.queryForObject("insert into quiztable (username, user_password) " +
+              "values(?, ?) returning id", int.class, username, password);
+
+      User newUser = new User();
+      newUser.setUser_id(id);
+      newUser.setUsername(username);
+      newUser.setUser_password(password);
+
+      return newUser;
+
     }
 
     @Override

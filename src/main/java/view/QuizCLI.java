@@ -1,19 +1,52 @@
-package quizmodel;
+package view;
+
+import dao.JdbcUserDAO;
+import dao.UserDAO;
+import org.apache.commons.dbcp2.BasicDataSource;
+
+import javax.sql.DataSource;
+
 
 import java.util.Scanner;
 
-import static view.CLI.displayBanner;
-import static view.CLI.runDisplay;
+
+import static quizmodel.OOPQuestions.quizPrint;
+import static quizmodel.quizMenu.displayBanner;
+import static quizmodel.quizMenu.runDisplay;
+
+public class QuizCLI {
 
 
-public class Login {
-    private static Scanner user = new Scanner(System.in);
-    private static boolean isLoggedIn = true;
+        private static UserDAO quizUser;
+        private static Scanner user = new Scanner(System.in);
+        private static boolean isLoggedIn = true;
+        private static String username;
+        private static String password;
+
+
+
+        public static void main(String[] args) {
+
+            BasicDataSource dataSource = new BasicDataSource();
+            dataSource.setUrl("jdbc:postgresql://localhost:5432/quiztable");
+            dataSource.setUsername("postgres");
+            dataSource.setPassword("postgres1");
+
+            QuizCLI application = new QuizCLI(dataSource);
+            application.run();
+
+        }
+
+        public QuizCLI(DataSource dataSource) {
+            this.quizUser = new JdbcUserDAO(dataSource);
+        }
 
 
 
 
-    public static void loginMenu() {
+
+
+    public static boolean loginMenu() {
 
         displayBanner();
 
@@ -47,30 +80,41 @@ public class Login {
 
         }
         isLoggedIn = false;
-
+        return true;
     }
 
 
     private static void firstLogIn() {
 
         System.out.print("Username: ");
-        String username = user.nextLine();
+        username = user.nextLine();
         System.out.print("Password: ");
-        String password = user.nextLine();
+        password = user.nextLine();
 
         if(!username.isBlank() && !password.isBlank()) {
+
             System.out.println();
             System.out.println("\t\t\t" + "Welcome " + username);
-                runDisplay();
 
-                isLoggedIn = false;
+            runDisplay();
+
+            isLoggedIn = false;
 
         }
 
 
     }
 
+    private void run() {
+        loginMenu();
+
+    }
 
 
 
-}
+
+
+
+
+
+ }

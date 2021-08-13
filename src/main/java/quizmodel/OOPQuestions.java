@@ -8,17 +8,6 @@ import java.util.Scanner;
 public class OOPQuestions {
 
 
-    public static void main(String[] args) throws InterruptedException {
-
-
-                quizPrint();
-
-        }
-
-
-
-
-
     public static Map<String, String> questions(){
 
         Map<String, String> quizQuestions = new HashMap<>();
@@ -40,7 +29,7 @@ public class OOPQuestions {
 
 
 
-    public static void quizPrint() throws InterruptedException {
+    public static void quizPrint()  {
 
         Scanner input = new Scanner(System.in);
 
@@ -63,48 +52,73 @@ public class OOPQuestions {
         int correctAnswerCount = 0;
 
 
+
+
         for (Map.Entry<String, String> map : questions().entrySet()) {
 
-            Thread.sleep(1000);
-            System.out.println("Question " + count++ + ".   " + map.getKey());
-            System.out.println();
 
-            System.out.print("Answer >>>  ");
+                try {
 
-            String quizInput = input.nextLine();
+                    Thread.sleep(1000);
+                    System.out.println("Question " + count++ + ".   " + map.getKey());
+                    System.out.println();
 
-            if (map.getValue().equalsIgnoreCase(quizInput)) {
-                System.out.println();
-                Thread.sleep(1000);
-                System.out.println("correct answer");
-                System.out.println("**************");
-                correctAnswerCount++;
-            } else {
-                System.out.println();
-                Thread.sleep(1000);
-                System.out.println("wrong answer");
-                System.out.println("************");
-            }
+                    System.out.print("Answer >>>  ");
 
-            System.out.println();
+                    String quizInput = input.nextLine();
+
+                    if (map.getValue().equalsIgnoreCase(quizInput)) {
+                        System.out.println();
+                        Thread.sleep(1000);
+                        System.out.println("correct answer");
+                        System.out.println("**************");
+                        correctAnswerCount++;
+                    } else {
+                        System.out.println();
+                        Thread.sleep(1000);
+                        System.out.println("wrong answer");
+                        System.out.println("************");
+
+                        System.out.println();
+                        Thread.sleep(1000);
+                        System.out.print("The correct answer is " + map.getValue() + ".");
+                        System.out.println();
+
+                    }
+                    System.out.println();
+
+                } catch (InterruptedException e) {
+                    System.out.println("An error occurred!");
+                }
 
         }
-        if(correctAnswerCount > 6) {
-            System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
-            System.out.println("*********************************************");
-        }else {
-            System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");
-            System.out.println();
-            System.out.print("Do you want to try again? Yes or No >>> ");
 
-            String userInput = input.nextLine();
-
-            if (userInput.equalsIgnoreCase("yes")) {
-                quizPrint();
+        try {
+            Thread.sleep(1500);
+            if (correctAnswerCount > 6) {
+                System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
+                System.out.println("*********************************************");
             } else {
-                System.out.println("Thank you...");
+                System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");
+                System.out.println();
+                System.out.print("Do you want to try again? Yes or No >>> ");
+
+                String userInput = input.nextLine();
+
+                if (userInput.equalsIgnoreCase("yes")) {
+                    Thread.sleep(1500);
+                    quizPrint();
+                } else {
+                    System.out.println();
+                    Thread.sleep(1500);
+                    System.out.println("Thank you for taking the questions");
+                    System.exit(1);
+
+                }
 
             }
+        }catch(InterruptedException e) {
+            System.out.println("An error occurred");
         }
 
     }

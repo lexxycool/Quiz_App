@@ -22,4 +22,20 @@ public class User {
     public int getUser_score() {
         return user_score;
     }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setUser_password(String user_password) {
+        this.user_password = user_password;
+    }
+
+    public void setUser_score(int user_score) {
+        this.user_score = user_score;
+    }
 }
