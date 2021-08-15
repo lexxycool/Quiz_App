@@ -7,6 +7,14 @@ public class User {
     private String user_password;
     private int user_score;
 
+    public User(String username) {
+        this.username = username;
+    }
+
+    public User() {
+
+    }
+
     public long getUser_id() {
         return user_id;
     }
@@ -37,5 +45,11 @@ public class User {
 
     public void setUser_score(int user_score) {
         this.user_score = user_score;
+    }
+
+    @Override
+    public String toString() {
+
+        return username;
     }
 }

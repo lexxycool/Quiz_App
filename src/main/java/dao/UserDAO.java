@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface UserDAO {
 
-    public User saveUser(String username, String password);
-    public boolean isUsernameAndPasswordValid(String username, String password);
-    public List<User> getAllUserScores();
+    List<User> getAllUsers();
+    User getUserById(int id);
+    User createUser(User user);
+    boolean isUsernameAndPasswordValid(String username, String password);
+    List<User> getAllUserScores();
+
+
 }
