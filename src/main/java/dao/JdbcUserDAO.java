@@ -45,14 +45,47 @@ public class JdbcUserDAO implements UserDAO {
     }
 
     @Override
-    public User createUser(User user) {
+    public void createUser(String user, String password) {
+        String sql = "insert into quiztable (user_id, username, user_password, user_score) values (?, ?, ?, ?)";
+        int userID = (int) getUserCount() + 1;
+        jdbcTemplate.update(sql, userID, user, password, 0);
 
-        return null;
+
+   }
+
+    @Override
+    public boolean isUsernameValid(String username) {
+        String checkForUsername = "";
+        String sql = "select * from quiztable where username = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+        if(results.next()) {
+           checkForUsername = results.getString("username");
+        }
+        if(checkForUsername.equals(username)){
+            System.out.println("username is valid");
+            return true;
+        }
+
+        System.out.println("username is not valid");
+        return false;
     }
 
     @Override
-    public boolean isUsernameAndPasswordValid(String username, String password) {
+    public boolean isPasswordValid(String password) {
+        String checkForPassword = "";
+        String sql = "select * from quiztable where user_password = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, password);
+        if(results.next()) {
+            checkForPassword = results.getString("user_password");
+        }
+        if(checkForPassword.equals(password)){
+            System.out.println("password is valid");
+            return true;
+        }
+
+        System.out.println("password is not valid");
         return false;
+
     }
 
     @Override
@@ -69,5 +102,13 @@ public class JdbcUserDAO implements UserDAO {
         return user;
     }
 
+    private long getUserCount() {
+        long getCount = 0;
+        String sql1 = "select count(*) from quiztable";
+        long count = jdbcTemplate.queryForObject(sql1, Long.class);
+        getCount = count;
+
+        return getCount;
+    }
 
 }

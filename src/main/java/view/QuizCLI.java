@@ -18,7 +18,7 @@ import static quizmodel.quizMenu.runDisplay;
 public class QuizCLI {
 
 
-        private static UserDAO quizUser;
+
         private static Scanner user = new Scanner(System.in);
         private static boolean isLoggedIn = true;
         private static String username;
@@ -37,14 +37,14 @@ public class QuizCLI {
             QuizCLI application = new QuizCLI(dataSource);
             application.run();
 
+
+
+
         }
 
         public QuizCLI(DataSource dataSource) {
             userDAO = new JdbcUserDAO(dataSource);
         }
-
-
-
 
 
 
@@ -67,7 +67,12 @@ public class QuizCLI {
                 if (newUser == 1) {
                     firstLogIn();
                 }else if(newUser == 2) {
-                    System.out.println("log in as old user");
+                    System.out.print("username: ");
+                    username = user.nextLine();
+                    System.out.print("password: ");
+                    password = user.nextLine();
+                    userDAO.isUsernameValid(username);
+                    userDAO.isPasswordValid(password);
                     isLoggedIn = false;
                 }else if(newUser == 3) {
                     System.out.println();
@@ -111,7 +116,7 @@ public class QuizCLI {
         username = user.nextLine();
         System.out.print("Password: ");
         password = user.nextLine();
-
+        userDAO.createUser(username, password);
         if(!username.isBlank() && !password.isBlank()) {
             System.out.println();
             System.out.println("\t\t\t" + "Welcome " + username);
@@ -126,6 +131,7 @@ public class QuizCLI {
     private void run() {
         loginMenu();
 
+
     }
 
     public static void  getAllUsers() {
@@ -137,9 +143,7 @@ public class QuizCLI {
         }
     }
 
-   /* public User getUser(int id){
-            return userDAO.getUserById(id);
-    }*/
+
 
 
 

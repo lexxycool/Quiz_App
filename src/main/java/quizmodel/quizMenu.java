@@ -2,7 +2,8 @@ package quizmodel;
 
 import java.util.Scanner;
 
-import static quizmodel.OOPQuestions.quizPrint;
+import static quizmodel.DataTypesAndArrayQuestions.dataQuiz;
+import static quizmodel.OOPQuestions.OOPQuiz;
 
 public class quizMenu {
     private static Scanner userInput = new Scanner(System.in);
@@ -53,11 +54,9 @@ public class quizMenu {
     private static void promptForInt(int num) {
 
         if (num == 1) {
-            quizPrint();
-          //1 isRunning = !isRunning;
-        } else if (num == 2) {
-            System.out.println("Object-Oriented Programming");
-            isRunning = !isRunning;
+            dataQuiz();
+          } else if (num == 2) {
+            OOPQuiz();
         } else if (num == 3) {
             System.out.println("Unit Testing");
             isRunning = !isRunning;
