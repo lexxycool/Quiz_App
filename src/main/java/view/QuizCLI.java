@@ -74,8 +74,9 @@ public class QuizCLI {
                     System.out.println("\n"+user);
                     isLoggedIn = false;
                 }else if(newUser == 5) {
-                    System.out.println("user and score");
-
+                    System.out.print("\nPlease enter your username: ");
+                    String userScore = user.nextLine();
+                    userDAO.getUserAndScore(userScore);
                     isLoggedIn = false;
                 }
                 else if(newUser == 6) {
@@ -90,7 +91,6 @@ public class QuizCLI {
                 System.out.println("Invalid option: please enter a number");
                 System.out.println();
             }
-
         }
         isLoggedIn = false;
         return true;

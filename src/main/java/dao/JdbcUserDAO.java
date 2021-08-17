@@ -82,9 +82,22 @@ public class JdbcUserDAO implements UserDAO {
     }
 
     @Override
-    public List<User> getAllUserScores() {
-        return null;
+    public void getUserAndScore(String username) {
+         String sql = "select username, user_score from quiztable " +
+                "where username = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
+
+        if (!result.next()) {
+              System.out.println("\nusername does not exist...Please sign in as new user");
+
+        }else {
+            String user = result.getString("username");
+            int score = result.getInt("user_score");
+            System.out.println("\nThank you " + user + " for taking " +
+                    "the quiz . Your overall score is " + score + ".");
+        }
     }
+
 
     private User mapRowToUser(SqlRowSet result) {
         User user = new User();

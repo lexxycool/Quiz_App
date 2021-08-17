@@ -25,7 +25,7 @@ public class quizMenu {
 
         System.out.println("1. Data Types and Arrays");
         System.out.println("2. Object-Oriented Programming");
-        System.out.println("3. Unit Testing");
+        System.out.println("3. Unit Testing and Exceptions");
         System.out.println("4. Database");
         System.out.println("5. API SERVICES");
         System.out.println("6. Exit");
