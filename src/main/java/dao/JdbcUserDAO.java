@@ -62,12 +62,9 @@ public class JdbcUserDAO implements UserDAO {
            checkForUsername = results.getString("username");
         }
         if(checkForUsername.equals(username)){
-            System.out.println("username is valid");
             return true;
         }
-
-        System.out.println("username is not valid");
-        return false;
+       return false;
     }
 
     @Override
@@ -79,13 +76,9 @@ public class JdbcUserDAO implements UserDAO {
             checkForPassword = results.getString("user_password");
         }
         if(checkForPassword.equals(password)){
-            System.out.println("password is valid");
             return true;
         }
-
-        System.out.println("password is not valid");
-        return false;
-
+      return false;
     }
 
     @Override

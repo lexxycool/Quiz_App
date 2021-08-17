@@ -17,14 +17,11 @@ import static quizmodel.quizMenu.runDisplay;
 
 public class QuizCLI {
 
-
-
         private static Scanner user = new Scanner(System.in);
         private static boolean isLoggedIn = true;
         private static String username;
         private static String password;
         private static UserDAO userDAO;
-
 
         public static void main(String[] args) {
 
@@ -33,12 +30,8 @@ public class QuizCLI {
             dataSource.setUsername("postgres");
             dataSource.setPassword("postgres1");
 
-
             QuizCLI application = new QuizCLI(dataSource);
             application.run();
-
-
-
 
         }
 
@@ -46,22 +39,19 @@ public class QuizCLI {
             userDAO = new JdbcUserDAO(dataSource);
         }
 
-
-
     public static boolean loginMenu() {
 
         displayBanner();
 
         while(isLoggedIn) {
             try {
-                System.out.println("1. New user");
+                System.out.println("\n1. New user");
                 System.out.println("2. Log in");
                 System.out.println("3. Show all users");
                 System.out.println("4. Show user by id");
                 System.out.println("5. Show user and score");
                 System.out.println("6. Quit");
-                System.out.println();
-                System.out.print("Select from the given option: ");
+                System.out.print("\nSelect from the given option: ");
 
                 int newUser = Integer.parseInt(user.nextLine());
                 if (newUser == 1) {
@@ -71,9 +61,7 @@ public class QuizCLI {
                     username = user.nextLine();
                     System.out.print("password: ");
                     password = user.nextLine();
-                    userDAO.isUsernameValid(username);
-                    userDAO.isPasswordValid(password);
-                    isLoggedIn = false;
+                    authUsernameAndPassword();
                 }else if(newUser == 3) {
                     System.out.println();
                     getAllUsers();
@@ -83,8 +71,7 @@ public class QuizCLI {
                     System.out.print("\nPlease enter the id of the user: ");
                     int userId = Integer.parseInt(user.nextLine());
                     User user = userDAO.getUserById(userId);
-                    System.out.println(user);
-
+                    System.out.println("\n"+user);
                     isLoggedIn = false;
                 }else if(newUser == 5) {
                     System.out.println("user and score");
@@ -109,7 +96,6 @@ public class QuizCLI {
         return true;
     }
 
-
     private static void firstLogIn() {
 
         System.out.print("Username: ");
@@ -118,11 +104,8 @@ public class QuizCLI {
         password = user.nextLine();
         userDAO.createUser(username, password);
         if(!username.isBlank() && !password.isBlank()) {
-            System.out.println();
-            System.out.println("\t\t\t" + "Welcome " + username);
-
+            message();
             runDisplay();
-
             isLoggedIn = false;
         }
 
@@ -130,7 +113,6 @@ public class QuizCLI {
 
     private void run() {
         loginMenu();
-
 
     }
 
@@ -143,16 +125,28 @@ public class QuizCLI {
         }
     }
 
+    private static void authUsernameAndPassword() {
+        boolean authUsername = userDAO.isUsernameValid(username);
+        boolean authPassword = userDAO.isPasswordValid(password);
+        if(authUsername && authPassword) {
+            System.out.println("Logged In");
+            message();
+            runDisplay();
+        }else if(!authUsername && authPassword) {
+            System.out.println("\nusername is invalid...Please try again");
+        }else if(!authPassword && authUsername) {
+            System.out.println("\npassword is invalid..Please try again");
+        }else {
+            System.out.println("\nusername and password is invalid...Please try again");
+        }
+
+    }
+
+    private static void message() {
+        System.out.println("\n\t\t\twelcome " + username);
+    }
 
 
 
 
-
-
-
-
-
-
-
-
- }
+}
