@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import static quizmodel.OOPQuestions.OOPQuiz;
+
 
 public class DataTypesAndArrayQuestions {
 
@@ -97,10 +99,11 @@ public class DataTypesAndArrayQuestions {
             if (correctAnswerCount > 6) {
                 System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
                 System.out.println("*********************************************");
+                System.out.println();
+                OOPQuiz();
             } else {
                 System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");
-                System.out.println();
-                System.out.print("Do you want to try again? Yes or No >>> ");
+                System.out.print("\nDo you want to try again? Yes or No >>> ");
 
                 String userInput = input.nextLine();
 

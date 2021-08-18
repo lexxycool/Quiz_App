@@ -31,13 +31,13 @@ public class TestingAndExceptionsQuestions {
 
 
 
-    public static void OOPQuiz()  {
+    public static void TestAndExceptionQuiz()  {
 
         Scanner input = new Scanner(System.in);
         System.out.println();
         System.out.println(" ################################### ");
         System.out.println(" #                                 # ");
-        System.out.println(" #   Object-Oriented Programming   # ");
+        System.out.println(" #   Unit Testing and Exceptions   # ");
         System.out.println(" #                                 # ");
         System.out.println(" ################################### ");
 
@@ -99,7 +99,9 @@ public class TestingAndExceptionsQuestions {
             Thread.sleep(1500);
             if (correctAnswerCount > 6) {
                 System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
-                System.out.println("******************************************************");
+                System.out.println("*************************************************************");
+                System.out.println();
+
             } else {
                 System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");
                 System.out.println();

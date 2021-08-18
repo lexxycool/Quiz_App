@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import static quizmodel.DataTypesAndArrayQuestions.dataQuiz;
 import static quizmodel.OOPQuestions.OOPQuiz;
+import static quizmodel.TestingAndExceptionsQuestions.TestAndExceptionQuiz;
 
 public class quizMenu {
     private static Scanner userInput = new Scanner(System.in);
@@ -58,7 +59,7 @@ public class quizMenu {
           } else if (num == 2) {
             OOPQuiz();
         } else if (num == 3) {
-            System.out.println("Unit Testing");
+           TestAndExceptionQuiz();
             isRunning = !isRunning;
         } else if (num == 4) {
             System.out.println("Database");
