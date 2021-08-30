@@ -1,5 +1,13 @@
 package quizmodel;
 
+
+
+
+
+import dao.JdbcUserDAO;
+import dao.UserDAO;
+import view.QuizCLI;
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -7,8 +15,13 @@ import java.util.Scanner;
 import static quizmodel.OOPQuestions.OOPQuiz;
 
 
-public class DataTypesAndArrayQuestions {
+public class DataTypesAndArrayQuestions extends QuizCLI {
 
+
+    public DataTypesAndArrayQuestions(DataSource dataSource) {
+        super(dataSource);
+
+    }
 
     public static Map<String, String> questions(){
 
@@ -16,7 +29,7 @@ public class DataTypesAndArrayQuestions {
         quizQuestions.put("A data structure where each link contains a connection to another link is called?", "Linked List");
         quizQuestions.put("If a class has more than one method with same name but different list of parameters. It is called what?", "Method Overloading");
         quizQuestions.put("Which type of collection can be used to store key value pairs?", "Map");
-        quizQuestions.put("What is responsible for converting byte code to machine readable code", "Java Virtual Machine");
+        quizQuestions.put("What is responsible for converting byte code to machine readable code?", "Java Virtual Machine");
         quizQuestions.put("The process of converting a primitive data type to a reference type is known as what?","Autoboxing");
         quizQuestions.put("Which data structure is commonly described as 'Last In First Out'?", "Stack");
         quizQuestions.put("A singleton class in Java can have only one instance Yes or No?", "Yes");
@@ -73,7 +86,9 @@ public class DataTypesAndArrayQuestions {
                         Thread.sleep(1000);
                         System.out.println("correct answer");
                         System.out.println("**************");
-                        correctAnswerCount++;
+                        newCount = ++correctAnswerCount;
+                        //jdbcdao to write to database
+                        userDAO.scores(newCount, username);
                     } else {
                         System.out.println();
                         Thread.sleep(1000);
@@ -98,12 +113,13 @@ public class DataTypesAndArrayQuestions {
             Thread.sleep(1500);
             if (correctAnswerCount > 6) {
                 System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
-                System.out.println("*********************************************");
+                System.out.println("*******************************************************");
                 System.out.println();
                 OOPQuiz();
             } else {
                 System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");
                 System.out.print("\nDo you want to try again? Yes or No >>> ");
+
 
                 String userInput = input.nextLine();
 

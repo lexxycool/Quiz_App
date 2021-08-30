@@ -7,30 +7,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static quizmodel.DataTypesAndArrayQuestions.dataQuiz;
-import static quizmodel.TestingAndExceptionsQuestions.testAndExceptionsQuiz;
-import static view.QuizCLI.userDAO;
+import static quizmodel.ApiQuestions.ApiQuiz;
+import static quizmodel.OOPQuestions.OOPQuiz;
 
-public class OOPQuestions extends QuizCLI {
+public class DatabaseQuestions extends QuizCLI {
 
-    public OOPQuestions(DataSource dataSource) {
+
+    public DatabaseQuestions(DataSource dataSource) {
         super(dataSource);
     }
-
 
     public static Map<String, String> questions(){
 
         Map<String, String> quizQuestions = new HashMap<>();
-        quizQuestions.put("Can we overload a static method in Java  Yes or No?", "Yes");
-        quizQuestions.put("What keyword can be used to refer to the parent's variables and methods?", "super");
-        quizQuestions.put("Which class is the superclass of all classes?", "Object class");
-        quizQuestions.put("The type of programming that focuses on objects is called?", "Object Oriented Programming");
-        quizQuestions.put("Which concept in OOP is applied when combining properties and methods in a single unit?", "Encapsulation");
-        quizQuestions.put("A hidden process in the JVM that automatically scoops up and destroys objects not in use is called?", "Garbage Collection");
-        quizQuestions.put("The final keyword at the class level means it can't be inherited?  Yes or No", "Yes");
-        quizQuestions.put("In Java are objects passed by value or by reference?", "value");
-        quizQuestions.put("The ability of our code to take different forms is known as ?", "Polymorphism");
-        quizQuestions.put("Which principle of OOP is described as parent-child relationship?", "Inheritance");
+        quizQuestions.put("A relational database is one in which the data is organized around columns and tables, Yes or No?", "Yes");
+        quizQuestions.put("The language used to interact with relational database management system is called what?", "SQL");
+        quizQuestions.put("Which type of join returns the rows in Table A that has a matching key value in Table B?", "inner join");
+        quizQuestions.put("Rules imposed on table upon creation that limits the ability to change data is called what?", "constraint");
+        quizQuestions.put("What uniquely identifies the row in a table and doesn't allow duplicates?","primary key");
+        quizQuestions.put("Mapping a database table to an existing class is the sole responsibility of a what?", "Database Access Object");
+        quizQuestions.put("A field in one table that uniquely identifies a row of another table is called what?", "Foreign key");
+        quizQuestions.put("The 'INSERT', 'UPDATE', 'DELETE' statements is part of what language of the database?", "Data Manipulation Language");
+        quizQuestions.put("JDBC Template class provides the means which a query can be made to the database, Yes or No", "Yes");
+        quizQuestions.put("Which keyword statement is always used in Data Query Language?", "Select");
 
         return quizQuestions;
     }
@@ -38,16 +37,16 @@ public class OOPQuestions extends QuizCLI {
 
 
 
-    public static void OOPQuiz()  {
+
+    public static void databaseQuiz()  {
 
         Scanner input = new Scanner(System.in);
         System.out.println();
         System.out.println(" ################################### ");
         System.out.println(" #                                 # ");
-        System.out.println(" #   Object-Oriented Programming   # ");
+        System.out.println(" #             DATABASE            # ");
         System.out.println(" #                                 # ");
         System.out.println(" ################################### ");
-
 
         System.out.println();
 
@@ -81,9 +80,9 @@ public class OOPQuestions extends QuizCLI {
                     Thread.sleep(1000);
                     System.out.println("correct answer");
                     System.out.println("**************");
-                    correctAnswerCount++;
                     newCount = ++correctAnswerCount;
                     userDAO.scores(newCount, username);
+
                 } else {
                     System.out.println();
                     Thread.sleep(1000);
@@ -108,9 +107,9 @@ public class OOPQuestions extends QuizCLI {
             Thread.sleep(1500);
             if (correctAnswerCount > 6) {
                 System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
-                System.out.println("********************************************************************");
+                System.out.println("*********************************************");
                 System.out.println();
-                testAndExceptionsQuiz();
+                ApiQuiz();
             } else {
                 System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");
                 System.out.print("\nDo you want to try again? Yes or No >>> ");
@@ -119,7 +118,7 @@ public class OOPQuestions extends QuizCLI {
 
                 if (userInput.equalsIgnoreCase("yes")) {
                     Thread.sleep(1500);
-                    dataQuiz();
+                    databaseQuiz();
                 } else {
                     System.out.println();
                     Thread.sleep(1500);
@@ -134,5 +133,4 @@ public class OOPQuestions extends QuizCLI {
         }
 
     }
-
 }

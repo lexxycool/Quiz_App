@@ -10,8 +10,6 @@ import javax.sql.DataSource;
 
 import java.util.List;
 import java.util.Scanner;
-
-
 import static quizmodel.quizMenu.displayBanner;
 import static quizmodel.quizMenu.runDisplay;
 
@@ -19,16 +17,14 @@ public class QuizCLI {
 
         private static Scanner user = new Scanner(System.in);
         private static boolean isLoggedIn = true;
-        private static String username;
+        public static String username;
         private static String password;
-        private static UserDAO userDAO;
+        public static UserDAO userDAO;
+        public static int newCount = 0;
 
         public static void main(String[] args) {
 
-            BasicDataSource dataSource = new BasicDataSource();
-            dataSource.setUrl("jdbc:postgresql://localhost:5432/QuizDatabase");
-            dataSource.setUsername("postgres");
-            dataSource.setPassword("postgres1");
+          DataSource dataSource =  dataSource();
 
             QuizCLI application = new QuizCLI(dataSource);
             application.run();
@@ -62,6 +58,7 @@ public class QuizCLI {
                     System.out.print("password: ");
                     password = user.nextLine();
                     authUsernameAndPassword();
+                    isLoggedIn = false;
                 }else if(newUser == 3) {
                     System.out.println();
                     getAllUsers();
@@ -94,6 +91,14 @@ public class QuizCLI {
         }
         isLoggedIn = false;
         return true;
+    }
+
+    public static DataSource dataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/QuizDatabase");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres1");
+        return dataSource;
     }
 
     private static void firstLogIn() {
@@ -145,6 +150,7 @@ public class QuizCLI {
     private static void message() {
         System.out.println("\n\t\t\twelcome " + username);
     }
+
 
 
 

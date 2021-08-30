@@ -7,30 +7,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static quizmodel.DataTypesAndArrayQuestions.dataQuiz;
-import static quizmodel.TestingAndExceptionsQuestions.testAndExceptionsQuiz;
-import static view.QuizCLI.userDAO;
+public class ApiQuestions extends QuizCLI {
 
-public class OOPQuestions extends QuizCLI {
-
-    public OOPQuestions(DataSource dataSource) {
+    public ApiQuestions(DataSource dataSource) {
         super(dataSource);
     }
-
 
     public static Map<String, String> questions(){
 
         Map<String, String> quizQuestions = new HashMap<>();
-        quizQuestions.put("Can we overload a static method in Java  Yes or No?", "Yes");
-        quizQuestions.put("What keyword can be used to refer to the parent's variables and methods?", "super");
-        quizQuestions.put("Which class is the superclass of all classes?", "Object class");
-        quizQuestions.put("The type of programming that focuses on objects is called?", "Object Oriented Programming");
-        quizQuestions.put("Which concept in OOP is applied when combining properties and methods in a single unit?", "Encapsulation");
-        quizQuestions.put("A hidden process in the JVM that automatically scoops up and destroys objects not in use is called?", "Garbage Collection");
-        quizQuestions.put("The final keyword at the class level means it can't be inherited?  Yes or No", "Yes");
-        quizQuestions.put("In Java are objects passed by value or by reference?", "value");
-        quizQuestions.put("The ability of our code to take different forms is known as ?", "Polymorphism");
-        quizQuestions.put("Which principle of OOP is described as parent-child relationship?", "Inheritance");
+        quizQuestions.put("The data used to interact with the API must be in what format?", "JSON");
+        quizQuestions.put("What does the status code '501' mean?", "Internal Server Error");
+        quizQuestions.put("A set of functions and/or procedures designed to interact with an external system is called what?", "API");
+        quizQuestions.put("The request type ideally suited to insert new data into the datasource is what?", "POST");
+        quizQuestions.put("The process of converting JSON objects to Java objects is known as ?","Deserialization");
+        quizQuestions.put("The JdbcTemplate is to the server as restTemplate is to?", "Client");
+        quizQuestions.put("A well defined route that can be able to communicate with an external application is what?", "Endpoint");
+        quizQuestions.put("A web service could potentially consume another API in order to function, Yes or No?", "Yes");
+        quizQuestions.put("What is the process of verifying that a user is able to access a system?", "Authentication");
+        quizQuestions.put("Which annotation helps you to create an object of a class without invoking the constructor manually?", "@component");
 
         return quizQuestions;
     }
@@ -38,16 +33,16 @@ public class OOPQuestions extends QuizCLI {
 
 
 
-    public static void OOPQuiz()  {
+
+    public static void ApiQuiz()  {
 
         Scanner input = new Scanner(System.in);
         System.out.println();
         System.out.println(" ################################### ");
         System.out.println(" #                                 # ");
-        System.out.println(" #   Object-Oriented Programming   # ");
+        System.out.println(" #          API SERVICES           # ");
         System.out.println(" #                                 # ");
         System.out.println(" ################################### ");
-
 
         System.out.println();
 
@@ -81,7 +76,6 @@ public class OOPQuestions extends QuizCLI {
                     Thread.sleep(1000);
                     System.out.println("correct answer");
                     System.out.println("**************");
-                    correctAnswerCount++;
                     newCount = ++correctAnswerCount;
                     userDAO.scores(newCount, username);
                 } else {
@@ -108,9 +102,8 @@ public class OOPQuestions extends QuizCLI {
             Thread.sleep(1500);
             if (correctAnswerCount > 6) {
                 System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
-                System.out.println("********************************************************************");
-                System.out.println();
-                testAndExceptionsQuiz();
+                System.out.println("************************************************************");
+                System.out.println("\nThank you for taking the quiz.");
             } else {
                 System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");
                 System.out.print("\nDo you want to try again? Yes or No >>> ");
@@ -119,7 +112,7 @@ public class OOPQuestions extends QuizCLI {
 
                 if (userInput.equalsIgnoreCase("yes")) {
                     Thread.sleep(1500);
-                    dataQuiz();
+                   ApiQuiz();
                 } else {
                     System.out.println();
                     Thread.sleep(1500);
@@ -134,5 +127,4 @@ public class OOPQuestions extends QuizCLI {
         }
 
     }
-
 }

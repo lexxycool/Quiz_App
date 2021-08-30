@@ -1,12 +1,21 @@
 package quizmodel;
 
+import view.QuizCLI;
+
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 import static quizmodel.DataTypesAndArrayQuestions.dataQuiz;
+import static quizmodel.DatabaseQuestions.databaseQuiz;
 
-public class TestingAndExceptionsQuestions {
+public class TestingAndExceptionsQuestions extends QuizCLI {
+
+    public TestingAndExceptionsQuestions(DataSource dataSource) {
+        super(dataSource);
+
+    }
 
 
     public static Map<String, String> questions(){
@@ -21,8 +30,8 @@ public class TestingAndExceptionsQuestions {
         quizQuestions.put("Abnormal occurrences that disrupts the normal flow of a program is called?", "Exceptions");
         quizQuestions.put("Which type of test tests how various units of a program interact with each other?", "Integration Testing");
         quizQuestions.put("Exploratory tests are better done manually?  Yes or No", "Yes");
-        quizQuestions.put("Which three statements can be used to handle exceptions in Java?", "try,catch,finally");
-        quizQuestions.put("Which method is used to print detailed information about occurred exceptions?", "PrintTrace()");
+        quizQuestions.put("Which three statements can be used to handle exceptions in Java?", "try, catch, finally");
+        quizQuestions.put("Which method is used to print detailed information about occurred exceptions?", "PrintTrace method");
         quizQuestions.put("Automation testing is a software testing process where minimal manual intervention is required  Yes or No?", "Yes");
 
         return quizQuestions;
@@ -31,7 +40,7 @@ public class TestingAndExceptionsQuestions {
 
 
 
-    public static void TestAndExceptionQuiz()  {
+    public static void testAndExceptionsQuiz()  {
 
         Scanner input = new Scanner(System.in);
         System.out.println();
@@ -74,7 +83,8 @@ public class TestingAndExceptionsQuestions {
                     Thread.sleep(1000);
                     System.out.println("correct answer");
                     System.out.println("**************");
-                    correctAnswerCount++;
+                    newCount =  ++correctAnswerCount;
+                    userDAO.scores(newCount, username);
                 } else {
                     System.out.println();
                     Thread.sleep(1000);
@@ -101,6 +111,7 @@ public class TestingAndExceptionsQuestions {
                 System.out.println("Nice job!!!...You got " + correctAnswerCount + " questions right out of 10 questions. ");
                 System.out.println("*************************************************************");
                 System.out.println();
+                databaseQuiz();
 
             } else {
                 System.out.println("You got " + correctAnswerCount + " out of 10 questions. I think you need to study more");

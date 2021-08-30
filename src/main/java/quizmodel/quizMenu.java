@@ -2,9 +2,11 @@ package quizmodel;
 
 import java.util.Scanner;
 
+import static quizmodel.ApiQuestions.ApiQuiz;
 import static quizmodel.DataTypesAndArrayQuestions.dataQuiz;
+import static quizmodel.DatabaseQuestions.databaseQuiz;
 import static quizmodel.OOPQuestions.OOPQuiz;
-import static quizmodel.TestingAndExceptionsQuestions.TestAndExceptionQuiz;
+import static quizmodel.TestingAndExceptionsQuestions.testAndExceptionsQuiz;
 
 public class quizMenu {
     private static Scanner userInput = new Scanner(System.in);
@@ -28,7 +30,7 @@ public class quizMenu {
         System.out.println("2. Object-Oriented Programming");
         System.out.println("3. Unit Testing and Exceptions");
         System.out.println("4. Database");
-        System.out.println("5. API SERVICES");
+        System.out.println("5. API Services");
         System.out.println("6. Exit");
         System.out.println();
         System.out.print("choose from the following concepts: ");
@@ -59,14 +61,14 @@ public class quizMenu {
           } else if (num == 2) {
             OOPQuiz();
         } else if (num == 3) {
-           TestAndExceptionQuiz();
-            isRunning = !isRunning;
+           testAndExceptionsQuiz();
+            isRunning = false;
         } else if (num == 4) {
-            System.out.println("Database");
-            isRunning = !isRunning;
+           databaseQuiz();
+            isRunning = false;
         } else if (num == 5) {
-            System.out.println("Api Services");
-            isRunning = !isRunning;
+            ApiQuiz();
+            isRunning = false;
         } else if (num == 6) {
             System.exit(1);
         } else {

@@ -93,10 +93,19 @@ public class JdbcUserDAO implements UserDAO {
         }else {
             String user = result.getString("username");
             int score = result.getInt("user_score");
-            System.out.println("\nThank you " + user + " for taking " +
-                    "the quiz . Your overall score is " + score + ".");
+            int num = 5;
+            int totalScore = score / num;
+            System.out.println("\nWelcome " + user + ". Your overall score is " + totalScore + "% .");
         }
     }
+
+        public void scores(int score, String username) {
+        String sql = "update quiztable set user_score = ? where username = ? ";
+        jdbcTemplate.update(sql, score, username);
+
+    }
+
+
 
 
     private User mapRowToUser(SqlRowSet result) {

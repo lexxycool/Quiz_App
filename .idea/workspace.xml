@@ -25,10 +25,26 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../obinnamokwe/module-2/17_Review" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mod2-capstone-green-t2" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="RunManager" selected="Application.QuizCLI">
+  <component name="RunManager" selected="Application.DataTypesAndArrayQuestions">
+    <configuration name="DataTypesAndArrayQuestions" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quizmodel.DataTypesAndArrayQuestions" />
+      <module name="Quiz" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="quizmodel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="QuizCLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.QuizCLI" />
       <module name="Quiz" />
@@ -51,6 +67,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DataTypesAndArrayQuestions" />
         <item itemvalue="Application.QuizCLI" />
         <item itemvalue="Application.QuizTime" />
       </list>
