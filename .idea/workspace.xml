@@ -25,13 +25,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mod2-capstone-green-t2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../obinnamokwe/module-2/11_HTTP_Web_Services_GET/exercise-final/java" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
-  <component name="RunManager" selected="Application.DataTypesAndArrayQuestions">
+  <component name="RunManager" selected="Application.QuizCLI">
     <configuration name="DataTypesAndArrayQuestions" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="quizmodel.DataTypesAndArrayQuestions" />
       <module name="Quiz" />
@@ -67,8 +67,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DataTypesAndArrayQuestions" />
         <item itemvalue="Application.QuizCLI" />
+        <item itemvalue="Application.DataTypesAndArrayQuestions" />
         <item itemvalue="Application.QuizTime" />
       </list>
     </recent_temporary>

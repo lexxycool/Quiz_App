@@ -139,10 +139,13 @@ public class QuizCLI {
             runDisplay();
         }else if(!authUsername && authPassword) {
             System.out.println("\nusername is invalid...Please try again");
+            loginMenu();
         }else if(!authPassword && authUsername) {
             System.out.println("\npassword is invalid..Please try again");
+            loginMenu();
         }else {
             System.out.println("\nusername and password is invalid...Please try again");
+            loginMenu();
         }
 
     }

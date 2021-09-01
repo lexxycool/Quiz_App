@@ -95,7 +95,7 @@ public class JdbcUserDAO implements UserDAO {
             int score = result.getInt("user_score");
             int num = 5;
             int totalScore = score / num;
-            System.out.println("\nWelcome " + user + ". Your overall score is " + totalScore + "% .");
+            System.out.println("\nWelcome" + user + ". Your overall score is " + totalScore + "% .");
         }
     }
 
