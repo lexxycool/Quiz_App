@@ -39,7 +39,7 @@ public class JdbcUserDAO implements UserDAO {
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
 
         if(result.next()) {
-           user = mapRowToUser(result);
+            user = mapRowToUser(result);
         }
         return user;
     }
@@ -51,7 +51,7 @@ public class JdbcUserDAO implements UserDAO {
         jdbcTemplate.update(sql, userID, user, password, 0);
 
 
-   }
+    }
 
     @Override
     public boolean isUsernameValid(String username) {
@@ -59,12 +59,12 @@ public class JdbcUserDAO implements UserDAO {
         String sql = "select * from quiztable where username = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
         if(results.next()) {
-           checkForUsername = results.getString("username");
+            checkForUsername = results.getString("username");
         }
         if(checkForUsername.equals(username)){
             return true;
         }
-       return false;
+        return false;
     }
 
     @Override
@@ -78,17 +78,17 @@ public class JdbcUserDAO implements UserDAO {
         if(checkForPassword.equals(password)){
             return true;
         }
-      return false;
+        return false;
     }
 
     @Override
     public void getUserAndScore(String username) {
-         String sql = "select username, user_score from quiztable " +
+        String sql = "select username, user_score from quiztable " +
                 "where username = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, username);
 
         if (!result.next()) {
-              System.out.println("\nusername does not exist...Please sign in as new user");
+            System.out.println("\nusername does not exist...Please sign in as new user");
 
         }else {
             String user = result.getString("username");
@@ -99,7 +99,7 @@ public class JdbcUserDAO implements UserDAO {
         }
     }
 
-        public void scores(int score, String username) {
+    public void scores(int score, String username) {
         String sql = "update quiztable set user_score = ? where username = ? ";
         jdbcTemplate.update(sql, score, username);
 

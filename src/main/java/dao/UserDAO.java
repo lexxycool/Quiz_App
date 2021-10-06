@@ -12,7 +12,6 @@ public interface UserDAO {
     boolean isUsernameValid(String username);
     boolean isPasswordValid(String password);
     void getUserAndScore(String username);
-
     void scores(int score, String username);
 
 
